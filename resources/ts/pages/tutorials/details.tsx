@@ -5,6 +5,7 @@ import useSwr from 'swr'
 import { TUTORIALS_ENDPOINT } from '../../shared/constants'
 import { fetcher } from '../../shared/helpers/fetcher'
 import { CircularSpinner } from '../../shared/components/spinners'
+import { ErrorView } from '../../shared/components/error'
 
 /* Hooks */
 const useTutorial = () => {
@@ -23,7 +24,7 @@ export const TutorialDetails = () => {
     )
   }
   if (error) {
-    return <p className="m-6 p-6 text-red-500 bg-red-100">Something went wrong</p>
+    return <ErrorView error={error} />
   }
   const { thumbnail, teacher, topic, description, title, embedUrl } = data!
   return (

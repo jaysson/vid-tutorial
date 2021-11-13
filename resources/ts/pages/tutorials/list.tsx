@@ -9,6 +9,7 @@ import { ChangeHandler } from '@researchgate/react-intersection-observer/typings
 import { CircularSpinner } from '../../shared/components/spinners'
 import { debounce } from 'debounce'
 import { Link } from 'react-router-dom'
+import { ErrorView } from '../../shared/components/error'
 
 /* Types */
 
@@ -86,7 +87,7 @@ const TutorialPreview = ({ title, description, thumbnail, teacher, topic, id }: 
 
 /* Container */
 export const TutorialsList = () => {
-  const { data, isValidating, setQuery, handleIntersectionChange } = useTutorials()
+  const { data, isValidating, setQuery, handleIntersectionChange, error } = useTutorials()
   const results = data?.flatMap((page) => page.data)
 
   return (
@@ -113,6 +114,7 @@ export const TutorialsList = () => {
             {index < results.length - 1 && <hr className="my-6" />}
           </div>
         ))}
+        {!!error && <ErrorView error={error} />}
         <Observer onChange={handleIntersectionChange}>
           <div className="text-center mt-6">{isValidating && <CircularSpinner />}</div>
         </Observer>

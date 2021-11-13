@@ -22,6 +22,8 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
   Route.resource('tutorials', 'TutorialsController').only(['index', 'show'])
-}).prefix('api')
+})
+  .prefix('api')
+  .middleware('throttle')
 
 Route.get('/*', 'ReactAppController.show')
