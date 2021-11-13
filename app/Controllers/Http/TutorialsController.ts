@@ -2,7 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Tutorial from 'App/Models/Tutorial'
 
 export default class TutorialsController {
-  public index({ request }: HttpContextContract) {
+  public async index({ request }: HttpContextContract) {
     const teacherId = request.input('teacher_id')
     const topicIds = request.input('topic_ids')
     const searchQuery = request.input('query')
@@ -24,6 +24,6 @@ export default class TutorialsController {
             query.where('name', 'LIKE', `%${searchQuery}%`)
           })
       })
-      .paginate(request.input('page'), 25)
+      .paginate(request.input('page', 1), 25)
   }
 }

@@ -2,8 +2,11 @@ import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Topic from 'App/Models/Topic'
 import Teacher from 'App/Models/Teacher'
+import CamelCaseNamingStrategy from 'App/Strategies/CamelCaseNamingStrategy'
 
 export default class Tutorial extends BaseModel {
+  public static namingStrategy = new CamelCaseNamingStrategy()
+
   @column({ isPrimary: true })
   public id: number
 
