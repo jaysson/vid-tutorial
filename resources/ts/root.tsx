@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { TutorialsList } from './pages/tutorials/list'
+import { TutorialDetails } from './pages/tutorials/details'
 
 export const Root = () => {
   return (
@@ -8,6 +9,7 @@ export const Root = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<TutorialsList />} />
+          <Route path="/:id" element={<TutorialDetails />} />
         </Routes>
       </BrowserRouter>
     </div>

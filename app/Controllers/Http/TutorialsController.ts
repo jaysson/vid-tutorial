@@ -26,4 +26,9 @@ export default class TutorialsController {
       })
       .paginate(request.input('page', 1), 25)
   }
+
+  public show({ request }: HttpContextContract) {
+    const id = request.param('id')
+    return Tutorial.query().preload('teacher').preload('topic').where('id', id).first()
+  }
 }

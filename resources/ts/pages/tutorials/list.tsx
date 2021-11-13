@@ -8,6 +8,7 @@ import Observer from '@researchgate/react-intersection-observer'
 import { ChangeHandler } from '@researchgate/react-intersection-observer/typings/types'
 import { CircularSpinner } from '../../shared/components/spinners'
 import { debounce } from 'debounce'
+import { Link } from 'react-router-dom'
 
 /* Types */
 
@@ -56,15 +57,17 @@ const SearchInput = ({ onChange }: { onChange: (value: string) => any }) => {
   )
 }
 
-const TutorialPreview = ({ title, description, thumbnail, teacher, topic }: Tutorial) => {
+const TutorialPreview = ({ title, description, thumbnail, teacher, topic, id }: Tutorial) => {
   return (
     <article className="flex">
-      <div>
+      <Link to={`/${id}`}>
         <img src={thumbnail} alt={title} className="rounded-lg" />
-      </div>
+      </Link>
       <div className="flex-1 pl-4">
         <header>
-          <h3 className="text-gray-900 font-semibold text-lg mb-1">{title}</h3>
+          <Link to={`/${id}`}>
+            <h3 className="text-gray-900 font-semibold text-lg mb-1">{title}</h3>
+          </Link>
         </header>
         <p>{description}</p>
         <footer className="flex mt-4">
