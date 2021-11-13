@@ -23,4 +23,7 @@ export const TutorialFactory = Factory.define(Tutorial, ({ faker }) => {
     thumbnail: faker.image.imageUrl(128, 128),
     embedUrl: 'https://www.youtube.com/embed/eKY-QES1XQQ',
   }
-}).build()
+})
+  .relation('topic', () => TopicFactory)
+  .relation('teacher', () => TeacherFactory)
+  .build()
